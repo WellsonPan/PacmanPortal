@@ -5,4 +5,5 @@ class Settings():
 
         # Pacman
         self.pacmanColor = (255, 255, 0)
-        self.pacmanRad = 16
+        self.pacmanRad = 30
+        self.pacmanSpeed = 1

@@ -1,7 +1,9 @@
 import pygame
+from pygame.sprite import Sprite
 
-class ImageRect():
-    def __init__(self, screen, imagename, height, width):
+class ImageRect(Sprite):
+    def __init__(self, screen, imagename, height, width, x, y):
+        super(ImageRect, self).__init__()
         self.screen = screen
         name = "images/" + imagename + ".png"
 
@@ -11,6 +13,8 @@ class ImageRect():
         self.rect.left -= self.rect.width
         self.rect.top -= self.rect.height
         self.image = img
+        self.rect.x = x
+        self.rect.y = y
 
     def blit(self):
         self.screen.blit(self.image, self.rect)
