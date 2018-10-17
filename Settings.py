@@ -5,5 +5,12 @@ class Settings():
 
         # Pacman
         self.pacmanColor = (255, 255, 0)
-        self.pacmanRad = 30
-        self.pacmanSpeed = 1
+        self.pacmanRad = 36
+        self.pacmanSpeed = 2
+
+        # points
+        self.pointVal = 10
+        self.score = 0
+
+    def resetScore(self):
+        self.score = 0
