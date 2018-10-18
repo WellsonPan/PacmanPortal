@@ -1,5 +1,6 @@
 import pygame
 import sys
+from Portal import oPortal, iPortal
 
 class EventLoop():
     def __init__(self, finished):
@@ -16,7 +17,7 @@ class EventLoop():
             maze.resetMaze(points)
 
     @staticmethod
-    def checkEvents(game):
+    def checkEvents(game, portals, portals2):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -45,6 +46,12 @@ class EventLoop():
                     game.pacmanLeft.movingUp = True
                     game.pacmanUp.movingUp = True
                     game.pacmanDown.movingUp = True
+                if event.key == pygame.K_q:
+                    oportal = oPortal(game.pacSettings, game.screen, game.pacman)
+                    portals.add(oportal)
+                if event.key == pygame.K_e:
+                    iportal = iPortal(game.pacSettings, game.screen, game.pacman)
+                    portals2.add(iportal)
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     game.pacman.movingRight = False
@@ -104,7 +111,8 @@ class EventLoop():
             game.pacmanUp.movingDown = False
             game.pacmanDown.movingDown = False
 
-    def scoring(self, pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, points):
+    @staticmethod
+    def scoring(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, points):
         collisionPoint = pygame.sprite.spritecollide(pacman, points, True)
         collisionLeft = pygame.sprite.spritecollide(pacmanLeft, points, True)
         collisionRight = pygame.sprite.spritecollide(pacmanRight, points, True)
@@ -113,3 +121,16 @@ class EventLoop():
 
         if collisionPoint or collisionLeft or collisionRight or collisionUp or collisionDown:
             pacSettings.score += pacSettings.pointVal
+
+    @staticmethod
+    def portalWallCollision(portals, portals2, mazeBound):
+        collisions = pygame.sprite.groupcollide(portals, mazeBound, False, False)
+        collisions2 = pygame.sprite.groupcollide(portals2, mazeBound, False, False)
+        collisions3 = pygame.sprite.groupcollide(portals, portals2, True, True)
+
+        for port in collisions.copy():
+            port.stop()
+
+        for port in collisions2.copy():
+            port.stop()
+

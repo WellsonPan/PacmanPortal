@@ -1,6 +1,6 @@
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X.....................XX.....................X
-X.,,,,,,,,,,,,,,,,,,,.XX.,,,,,,,,,,,,,,,,,,,.h
+X.,,,,,,,,,,,,,,,,,,,.XX.,,,,,,,,,,,,,,,,,,,.X
 X.,.......,.........,.XX.,.........,.......,.X
 X.,.XXXXX.,.XXXXXXX.,.XX.,.XXXXXXX.,.XXXXX.,.X
 X.,.XXXXX.,.XXXXXXX.,.XX.,.XXXXXXX.,.XXXXX.,.X
@@ -21,17 +21,17 @@ XXXXXXXXX.,.XXXXXXX.,.XX.,.XXXXXXX.,.XXXXXXXXX
 ........X.,.XX.,.XXXXooooXXXX.,.XX.,.X........
 XXXXXXXXX.,.XX.,.X..........X.,.XX.,.XXXXXXXXX
 X.........,....,.X..........X.,....,.........X
-h.,,,,,,,,,,,,,,.X..........X.,,,,,,,,,,,,,,.X
+X.,,,,,,,,,,,,,,.X..........X.,,,,,,,,,,,,,,.X
 X.........,....,.X..........X.,....,.........X
 XXXXXXXXX.,.XX.,.X..........X.,.XX.,.XXXXXXXXX
 ........X.,.XX.,.XXXXXXXXXXXX.,.XX.,.X........
 ........X.,.XX.,..............,.XX.,.X........
 ........X.,.XX.,,,,,,,,,,,,,,,,.XX.,.X........
 ........X.,.XX.,..............,.XX.,.X........
-........X.,.XX.,.XXvXXXXXXXXX.,.XX.,.X........
-XXXXXXXXX.,.XX.,.XXvXXXXXXXXX.,.XX.,.XXXXXXXXX
+........X.,.XX.,.XXXXXXXXXXXX.,.XX.,.X........
+XXXXXXXXX.,.XX.,.XXXXXXXXXXXX.,.XX.,.XXXXXXXXX
 X.........,....,......XX......,....,.........X
-h.,,,,,,,,,,,,,,,,,,,.XX.,,,,,,,,,,,,,,,,,,,.X
+X.,,,,,,,,,,,,,,,,,,,.XX.,,,,,,,,,,,,,,,,,,,.X
 X.,.......,.........,.XX.,.........,.......,.X
 X.,.XXXXX.,.XXXXXXX.,.XX.,.XXXXXXX.,.XXXXX.,.X
 X.,.XXXXX.,.XXXXXXX.,.XX.,.XXXXXXX.,.XXXXX.,.X
@@ -48,4 +48,4 @@ X.,.XXXXXXXXXXXXXXX.,.XX.,.XXXXXXXXXXXXXXX.,.X
 X.,.................,....,.................,.X
 X.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.X
 X............................................X
-XXXXXXXXXvXXXXXXXXXXXXXXvXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

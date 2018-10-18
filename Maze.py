@@ -6,7 +6,7 @@ class Maze():
     BLACK = (0, 0, 0)
     BRICK_SIZE = 16
     POINT_SIZE = 9
-    PILL_SIZE = 9
+    PILL_SIZE = 12
     def __init__(self, pacSettings, screen, mazefile, brickfile, portalfile, shieldfile, pointfile, mazeBound, barrierBound, points):#, pillfile):
         self.pacSettings = pacSettings
         self.screen = screen
