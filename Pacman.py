@@ -10,7 +10,7 @@ class Pacman(Sprite):
         self.color = pacSettings.pacmanColor
         self.rect = pygame.Rect(0, 0, int(self.pacSettings.pacmanRad / 3), int(self.pacSettings.pacmanRad / 3))
         self.rect.center = self.screenRect.center
-        self.rect.centery -= 115
+        self.rect.centery += 205
 
         self.movingLeft = False
         self.movingRight = False
@@ -38,8 +38,9 @@ class Pacman(Sprite):
         pygame.draw.circle(self.screen, self.color, self.rect.center, int(self.pacSettings.pacmanRad / 1.8))
 
     def resetPos(self):
-        self.rect.center = self.screenRect.center
-        self.rect.centery -= 115
+        self.centerx = self.screenRect.centerx
+        self.centery = self.screenRect.centery + 205
+
 
 class PacmanRight(Sprite):
     def __init__(self, pacSettings, screen, Pacman):
@@ -78,8 +79,9 @@ class PacmanRight(Sprite):
 
 
     def resetPos(self):
-        self.rect.center = self.pacman.rect.center
-        self.rect.centerx += int(self.pacSettings.pacmanRad / 3)
+        self.centery = self.pacman.centery
+        self.centerx = self.pacman.centerx
+        self.centerx += int(self.pacSettings.pacmanRad / 3)
 
 
 class PacmanLeft(Sprite):
@@ -115,8 +117,9 @@ class PacmanLeft(Sprite):
         self.rect.centery = self.centery
 
     def resetPos(self):
-        self.rect.center = self.pacman.rect.center
-        self.rect.centerx -= int(self.pacSettings.pacmanRad / 3)
+        self.centery = self.pacman.centery
+        self.centerx = self.pacman.centerx
+        self.centerx -= int(self.pacSettings.pacmanRad / 3)
 
 
 class PacmanUp(Sprite):
@@ -152,8 +155,9 @@ class PacmanUp(Sprite):
         self.rect.centery = self.centery
 
     def resetPos(self):
-        self.rect.center = self.pacman.rect.center
-        self.rect.centery -= int(self.pacSettings.pacmanRad / 3)
+        self.centery = self.pacman.centery
+        self.centerx = self.pacman.centerx
+        self.centery -= int(self.pacSettings.pacmanRad / 3)
 
 
 class PacmanDown(Sprite):
@@ -189,5 +193,6 @@ class PacmanDown(Sprite):
         self.rect.centery = self.centery
 
     def resetPos(self):
-        self.rect.center = self.pacman.rect.center
-        self.rect.centery += int(self.pacSettings.pacmanRad / 3)
+        self.centery = self.pacman.centery
+        self.centerx = self.pacman.centerx
+        self.centery += int(self.pacSettings.pacmanRad / 3)

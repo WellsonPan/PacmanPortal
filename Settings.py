@@ -21,7 +21,7 @@ class Settings():
         self.ghostSpeed = 1
 
         # Portal
-        self.portalSpeed = 8
+        self.portalSpeed = 10
 
     def resetScore(self):
         self.score = 0
