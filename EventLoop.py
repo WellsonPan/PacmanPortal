@@ -2,12 +2,8 @@ import pygame
 import sys
 from Portal import oPortal, iPortal, Laser, Laser2
 
-class EventLoop():
-    def __init__(self, finished):
-        self.finished = finished
 
-    @staticmethod
-    def levelComplete(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, points):
+def levelComplete(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, points):
         if len(points) == 0:
             pacman.resetPos()
             pacmanLeft.resetPos()
@@ -16,11 +12,21 @@ class EventLoop():
             pacmanDown.resetPos()
             maze.resetMaze(points)
 
-    @staticmethod
-    def checkEvents(game, laser, laser2):
+def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouseX, mouseY = pygame.mouse.get_pos()
+                buttonClicked = playButton.rect.collidepoint(mouseX, mouseY)
+                highClicked = highScoreButton.rect.collidepoint(mouseX, mouseY)
+                if buttonClicked and not pacSettings.gameActive:
+                    pacSettings.highScores = False
+                    pacSettings.gameActive = True
+                elif highClicked and not pacSettings.gameActive and not pacSettings.highScores:
+                    pacSettings.highScores = True
+                elif highClicked and not pacSettings.gameActive and pacSettings.highScores:
+                    pacSettings.highScores = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     game.pacman.movingRight = True
@@ -78,8 +84,8 @@ class EventLoop():
                     game.pacmanUp.movingUp = False
                     game.pacmanDown.movingUp = False
 
-    @staticmethod
-    def checkWallCollision(game, pacmanRight, pacmanLeft, pacmanUp, pacmanDown, mazeBound, barrierBound):
+
+def checkWallCollision(game, pacmanRight, pacmanLeft, pacmanUp, pacmanDown, mazeBound, barrierBound):
         collisionRight = pygame.sprite.spritecollideany(pacmanRight, mazeBound)
         collisionLeft = pygame.sprite.spritecollideany(pacmanLeft, mazeBound)
         collisionUp = pygame.sprite.spritecollideany(pacmanUp, mazeBound)
@@ -111,8 +117,8 @@ class EventLoop():
             game.pacmanUp.movingDown = False
             game.pacmanDown.movingDown = False
 
-    @staticmethod
-    def scoring(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, points):
+
+def scoring(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, points):
         collisionPoint = pygame.sprite.spritecollide(pacman, points, True)
         collisionLeft = pygame.sprite.spritecollide(pacmanLeft, points, True)
         collisionRight = pygame.sprite.spritecollide(pacmanRight, points, True)
@@ -122,8 +128,8 @@ class EventLoop():
         if collisionPoint or collisionLeft or collisionRight or collisionUp or collisionDown:
             pacSettings.score += pacSettings.pointVal
 
-    @staticmethod
-    def portalWallCollision(game, laser, laser2, portal, portal2, mazeBound):
+
+def portalWallCollision(game, laser, laser2, portal, portal2, mazeBound):
         collisions = pygame.sprite.groupcollide(laser, mazeBound, False, False)
         collisions2 = pygame.sprite.groupcollide(laser2, mazeBound, False, False)
         collisions3 = pygame.sprite.groupcollide(laser, laser2, True, True)
@@ -143,8 +149,8 @@ class EventLoop():
             portal2.add(iportal)
             laser2.remove(lase)
 
-    @staticmethod
-    def pacmanPortalCollision(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, portals, portals2):
+
+def pacmanPortalCollision(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, portals, portals2):
         collisions = pygame.sprite.spritecollide(pacman, portals, False)
         collisions2 = pygame.sprite.spritecollide(pacman, portals2, False)
 
@@ -174,3 +180,41 @@ class EventLoop():
                 pacmanDown.centerx = pacman.centerx
                 pacmanDown.centery = pacman.centery + int(pacSettings.pacmanRad / 3)
                 portals.remove(port)
+
+
+def readHighScore():
+    file = open("files/highScores.txt", "r")
+    high = int(file.read())
+    file.close()
+    return high
+
+
+def printHighScores(screen):
+    font = pygame.font.SysFont(None, 48)
+    high_score = int(round(readHighScore(), -1))
+    high_score_str = "{:,} Pts".format(high_score)
+    high_score_image = font.render(high_score_str, True, (255, 255, 255), (0, 0, 0))
+    screen_rect = screen.get_rect()
+
+    high_score_rect = high_score_image.get_rect()
+    high_score_rect.centerx = screen_rect.centerx
+    high_score_rect.centery = screen_rect.centery
+
+    exitHighString = "Exit"
+    exitImage = font.render(exitHighString, True, (255, 255, 255), (0, 0, 0))
+    exitRect = exitImage.get_rect()
+    exitRect.centerx = screen_rect.centerx
+    exitRect.centery = screen_rect.centery + 350
+
+    font = pygame.font.SysFont(None, 72)
+    highScore = "High Score"
+    scoreImage = font.render(highScore, True, (255, 255, 255), (0, 0, 0))
+    scoreRect = scoreImage.get_rect()
+    scoreRect.centerx = screen_rect.centerx
+    scoreRect.top = screen_rect.top + 50
+
+    screen.fill((0, 0, 0))
+    screen.blit(scoreImage, scoreRect)
+    screen.blit(high_score_image, high_score_rect)
+    screen.blit(exitImage, exitRect)
+    pygame.display.flip()

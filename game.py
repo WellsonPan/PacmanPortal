@@ -1,7 +1,7 @@
 import pygame
 from Maze import Maze
 from Settings import Settings
-from EventLoop import EventLoop
+import EventLoop as eloop
 from Pacman import Pacman
 from Pacman import PacmanRight
 from Pacman import PacmanLeft
@@ -10,6 +10,8 @@ from Pacman import PacmanDown
 from pygame.sprite import Group
 from pygame.sprite import GroupSingle
 from Ghost import Ghost
+from Button import Button, highScore
+from Start import Start
 
 class Game():
     def __init__(self, pacSettings):
@@ -18,6 +20,9 @@ class Game():
         self.pacSettings = pacSettings
         self.screen = pygame.display.set_mode((self.pacSettings.screenWidth, self.pacSettings.screenHeight))
         pygame.display.set_caption("Pacman Portal")
+        self.playButton = Button(self.pacSettings, self.screen, "Play Game")
+        self.highScoreButton = highScore(self.pacSettings, self.screen, "High Scores")
+        self.startScreen = Start(self.pacSettings, self.screen)
 
         self.pacman = Pacman(self.pacSettings, self.screen)
         self.pacmanRight = PacmanRight(self.pacSettings, self.screen, self.pacman)
@@ -39,23 +44,32 @@ class Game():
         self.maze = Maze(self.pacSettings, self.screen, "images/pacmanportalmaze.txt", "Block", "hPortal", "shield", "Point", "Node", self.mazeBound, self.barrierBound, self.points, self.nodes)
 
     def play(self):
-        eloop = EventLoop(finished=False)
+        while True:
+            eloop.checkEvents(self, self.pacSettings, self.laser, self.laser2, self.playButton, self.highScoreButton)
+            if self.pacSettings.gameActive and not self.pacSettings.highScores:
+                eloop.checkWallCollision(self, self.pacmanRight, self.pacmanLeft, self.pacmanUp, self.pacmanDown, self.mazeBound, self.barrierBound)
+                eloop.scoring(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.points)
+                eloop.levelComplete(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.maze, self.points)
+                eloop.portalWallCollision(self, self.laser, self.laser2, self.portals, self.portals2, self.mazeBound)
+                eloop.pacmanPortalCollision(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.portals, self.portals2)
+                self.updateScreen()
+                self.pacman.update()
+                self.pacmanRight.update()
+                self.pacmanLeft.update()
+                self.pacmanUp.update()
+                self.pacmanDown.update()
+                self.laser.update()
+                self.laser2.update()
+            elif not self.pacSettings.highScores and not self.pacSettings.gameActive:
+                self.screen.fill((0, 0, 0))
+                self.startScreen.printStart()
+                self.playButton.draw_button()
+                self.highScoreButton.draw_button()
+                pygame.display.flip()
+            elif self.pacSettings.highScores and not self.pacSettings.gameActive:
+                eloop.printHighScores(self.screen)
 
-        while not eloop.finished:
-            eloop.checkEvents(self, self.laser, self.laser2)
-            eloop.checkWallCollision(self, self.pacmanRight, self.pacmanLeft, self.pacmanUp, self.pacmanDown, self.mazeBound, self.barrierBound)
-            eloop.scoring(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.points)
-            eloop.levelComplete(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.maze, self.points)
-            eloop.portalWallCollision(self, self.laser, self.laser2, self.portals, self.portals2, self.mazeBound)
-            eloop.pacmanPortalCollision(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.portals, self.portals2)
-            self.updateScreen()
-            self.pacman.update()
-            self.pacmanRight.update()
-            self.pacmanLeft.update()
-            self.pacmanUp.update()
-            self.pacmanDown.update()
-            self.laser.update()
-            self.laser2.update()
+
 
     def updateScreen(self):
         self.screen.fill((0, 0, 0))

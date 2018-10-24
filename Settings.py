@@ -2,6 +2,9 @@ class Settings():
     def __init__(self):
         self.screenWidth = 738
         self.screenHeight = 818
+        self.backgroundColor = (0, 0, 0)
+        self.gameActive = False
+        self.highScores = False
 
         # Pacman
         self.pacmanColor = (255, 255, 0)
@@ -23,5 +26,6 @@ class Settings():
         # Portal
         self.portalSpeed = 10
 
-    def resetScore(self):
+    def reset(self):
         self.score = 0
+        self.gameActive = False

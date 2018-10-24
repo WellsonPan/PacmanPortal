@@ -1,5 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
+from timer import Timer
 
 class Pacman(Sprite):
     def __init__(self, pacSettings, screen):
@@ -7,10 +8,14 @@ class Pacman(Sprite):
         self.pacSettings = pacSettings
         self.screen = screen
         self.screenRect = screen.get_rect()
-        self.color = pacSettings.pacmanColor
+        #self.color = pacSettings.pacmanColor
+        self.color = (0, 255, 0)
         self.rect = pygame.Rect(0, 0, int(self.pacSettings.pacmanRad / 3), int(self.pacSettings.pacmanRad / 3))
         self.rect.center = self.screenRect.center
         self.rect.centery += 205
+
+        self.picListRight = ["images/PacmanClose.png", "images/PacmanHalf.png", "images/PacmanOpen.png", "images/PacmanHalf.png"]
+        self.time = Timer(self.picListRight)
 
         self.movingLeft = False
         self.movingRight = False
@@ -35,7 +40,12 @@ class Pacman(Sprite):
 
 
     def drawPacman(self):
-        pygame.draw.circle(self.screen, self.color, self.rect.center, int(self.pacSettings.pacmanRad / 1.8))
+        # pygame.draw.circle(self.screen, self.color, self.rect.center, int(self.pacSettings.pacmanRad / 1.8))
+        self.image = pygame.image.load(self.time.imagerect())
+        self.image = pygame.transform.scale(self.image, (46, 46))
+        self.newRect = self.image.get_rect()
+        self.newRect.center = self.rect.center
+        self.screen.blit(self.image, self.newRect)
 
     def resetPos(self):
         self.centerx = self.screenRect.centerx
