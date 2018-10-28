@@ -1,7 +1,46 @@
 import pygame
 import sys
 from Portal import oPortal, iPortal, Laser, Laser2
+from dijkstra import dijkstra
 
+
+def checkGhostNodeCollision(ghost, nodes):
+    collisions = pygame.sprite.spritecollideany(ghost, nodes)
+
+    if collisions:
+        ghost.setCurrentNode(collisions)
+        # print("Ghost" + ghost.currentNode.key)
+
+
+def checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes):
+    collisions = pygame.sprite.spritecollideany(pacman, nodes)
+    collisions1 = pygame.sprite.spritecollideany(pacmanLeft, nodes)
+    collisions2 = pygame.sprite.spritecollideany(pacmanRight, nodes)
+    collisions3 = pygame.sprite.spritecollideany(pacmanUp, nodes)
+    collisions4 = pygame.sprite.spritecollideany(pacmanDown, nodes)
+
+    if collisions:
+        pacman.setCurrentNode(collisions)
+        # print("Pacman" + pacman.currentNode.key)
+    elif collisions1:
+        pacman.setCurrentNode(collisions1)
+    elif collisions2:
+        pacman.setCurrentNode(collisions2)
+    elif collisions3:
+        pacman.setCurrentNode(collisions3)
+    elif collisions4:
+        pacman.setCurrentNode(collisions4)
+
+    route = dijkstra(ghost.currentNode.key, pacman.currentNode.key)
+    return route
+
+def ghostRouting(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes):
+    route = checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes)
+    if len(route) >= 1 and ghost.currentNode.key == route[0]:
+        route.pop(0)
+        ghost.setDirection(route[0])
+    else:
+        ghost.setDirection(route[0])
 
 def levelComplete(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, points):
         if len(points) == 0:

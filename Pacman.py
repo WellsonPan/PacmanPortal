@@ -13,9 +13,11 @@ class Pacman(Sprite):
         self.rect = pygame.Rect(0, 0, int(self.pacSettings.pacmanRad / 3), int(self.pacSettings.pacmanRad / 3))
         self.rect.center = self.screenRect.center
         self.rect.centery += 205
+        self.rect.centerx += 15
 
         self.picListRight = ["images/PacmanClose.png", "images/PacmanHalf.png", "images/PacmanOpen.png", "images/PacmanHalf.png"]
         self.time = Timer(self.picListRight)
+        self.currentNode = None
 
         self.movingLeft = False
         self.movingRight = False
@@ -24,6 +26,9 @@ class Pacman(Sprite):
 
         self.centerx = float(self.rect.centerx)
         self.centery = float(self.rect.centery)
+
+    def setCurrentNode(self, node):
+        self.currentNode = node
 
     def update(self):
         if self.movingLeft == True:

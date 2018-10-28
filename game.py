@@ -12,6 +12,7 @@ from pygame.sprite import GroupSingle
 from Ghost import Ghost
 from Button import Button, highScore
 from Start import Start
+from Node import Node
 
 class Game():
     def __init__(self, pacSettings):
@@ -52,6 +53,9 @@ class Game():
                 eloop.levelComplete(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.maze, self.points)
                 eloop.portalWallCollision(self, self.laser, self.laser2, self.portals, self.portals2, self.mazeBound)
                 eloop.pacmanPortalCollision(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.portals, self.portals2)
+                eloop.checkGhostNodeCollision(self.ghost, self.nodes)
+                # eloop.checkPacmanNodeCollision(self.pacman, self.ghost, self.nodes)
+                eloop.ghostRouting(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.ghost, self.nodes)
                 self.updateScreen()
                 self.pacman.update()
                 self.pacmanRight.update()
@@ -60,6 +64,7 @@ class Game():
                 self.pacmanDown.update()
                 self.laser.update()
                 self.laser2.update()
+                self.ghost.update()
             elif not self.pacSettings.highScores and not self.pacSettings.gameActive:
                 self.screen.fill((0, 0, 0))
                 self.startScreen.printStart()
