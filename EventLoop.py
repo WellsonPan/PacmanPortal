@@ -1,14 +1,31 @@
 import pygame
 import sys
-from Portal import oPortal, iPortal, Laser, Laser2
+from Portal import oPortal, iPortal, Laser, Laser2, nodeDetector
 from dijkstra import dijkstra
 
+
+def nextNodeDetection(pacman, mazeBound, nodes, nodeDetectors):
+    mazeCollision = pygame.sprite.groupcollide(mazeBound, nodeDetectors, False, True)
+    nodeCollision = pygame.sprite.groupcollide(nodes, nodeDetectors, False, True)
+
+    if nodeCollision:
+        for i in nodeCollision.copy():
+            pacman.setNextNode(i)
+            print(pacman.nextNode.key)
 
 def checkGhostNodeCollision(ghost, nodes):
     collisions = pygame.sprite.spritecollideany(ghost, nodes)
 
     if collisions:
         ghost.setCurrentNode(collisions)
+        if ghost.rect.centerx < collisions.rect.centerx:
+            ghost.centerx += 1
+        if ghost.rect.centerx > collisions.rect.centerx:
+            ghost.centerx -= 1
+        if ghost.rect.centery > collisions.rect.centery:
+            ghost.centery -= 1
+        if ghost.rect.centery < collisions.rect.centery:
+            ghost.centery += 1
         # print("Ghost" + ghost.currentNode.key)
 
 
@@ -36,9 +53,13 @@ def checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDo
 
 def ghostRouting(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes):
     route = checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes)
+    last = route[len(route) - 1]
     if len(route) >= 1 and ghost.currentNode.key == route[0]:
         route.pop(0)
-        ghost.setDirection(route[0])
+        if len(route) > 0:
+            ghost.setDirection(route[0])
+        else:
+            ghost.setDirection2(None)
     else:
         ghost.setDirection(route[0])
 
@@ -51,7 +72,12 @@ def levelComplete(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, p
             pacmanDown.resetPos()
             maze.resetMaze(points)
 
-def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton):
+def nodeDetectorCreate(flag, game, nodeDetectors):
+    if flag:
+        nod = nodeDetector(game.pacSettings, game.screen, game.pacman)
+        nodeDetectors.add(nod)
+
+def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, nodeDetectors):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -73,24 +99,28 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton):
                     game.pacmanLeft.movingRight = True
                     game.pacmanUp.movingRight = True
                     game.pacmanDown.movingRight = True
+                    nodeDetectorCreate(True, game, nodeDetectors)
                 if event.key == pygame.K_LEFT:
                     game.pacman.movingLeft = True
                     game.pacmanRight.movingLeft = True
                     game.pacmanLeft.movingLeft = True
                     game.pacmanUp.movingLeft = True
                     game.pacmanDown.movingLeft = True
+                    nodeDetectorCreate(True, game, nodeDetectors)
                 if event.key == pygame.K_DOWN:
                     game.pacman.movingDown = True
                     game.pacmanRight.movingDown = True
                     game.pacmanLeft.movingDown = True
                     game.pacmanUp.movingDown = True
                     game.pacmanDown.movingDown = True
+                    nodeDetectorCreate(True, game, nodeDetectors)
                 if event.key == pygame.K_UP:
                     game.pacman.movingUp = True
                     game.pacmanRight.movingUp = True
                     game.pacmanLeft.movingUp = True
                     game.pacmanUp.movingUp = True
                     game.pacmanDown.movingUp = True
+                    nodeDetectorCreate(True, game, nodeDetectors)
                 if event.key == pygame.K_q:
                     lase = Laser(game.pacSettings, game.screen, game.pacman)
                     laser.add(lase)
@@ -104,24 +134,28 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton):
                     game.pacmanLeft.movingRight = False
                     game.pacmanUp.movingRight = False
                     game.pacmanDown.movingRight = False
+                    nodeDetectorCreate(False, game, nodeDetectors)
                 if event.key == pygame.K_LEFT:
                     game.pacman.movingLeft = False
                     game.pacmanRight.movingLeft = False
                     game.pacmanLeft.movingLeft = False
                     game.pacmanUp.movingLeft = False
                     game.pacmanDown.movingLeft = False
+                    nodeDetectorCreate(False, game, nodeDetectors)
                 if event.key == pygame.K_DOWN:
                     game.pacman.movingDown = False
                     game.pacmanRight.movingDown = False
                     game.pacmanLeft.movingDown = False
                     game.pacmanUp.movingDown = False
                     game.pacmanDown.movingDown = False
+                    nodeDetectorCreate(False, game, nodeDetectors)
                 if event.key == pygame.K_UP:
                     game.pacman.movingUp = False
                     game.pacmanRight.movingUp = False
                     game.pacmanLeft.movingUp = False
                     game.pacmanUp.movingUp = False
                     game.pacmanDown.movingUp = False
+                    nodeDetectorCreate(False, game, nodeDetectors)
 
 
 def checkWallCollision(game, pacmanRight, pacmanLeft, pacmanUp, pacmanDown, mazeBound, barrierBound):

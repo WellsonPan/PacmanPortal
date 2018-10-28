@@ -21,7 +21,7 @@ class Settings():
         self.inkyColor = (137, 207, 240)
         self.clydeColor = (255, 165, 0)
         self.ghostSize = 34
-        self.ghostSpeed = 1.9
+        self.ghostSpeed = 1.5
 
         # Portal
         self.portalSpeed = 10

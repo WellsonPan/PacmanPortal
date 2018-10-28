@@ -18,6 +18,7 @@ class Pacman(Sprite):
         self.picListRight = ["images/PacmanClose.png", "images/PacmanHalf.png", "images/PacmanOpen.png", "images/PacmanHalf.png"]
         self.time = Timer(self.picListRight)
         self.currentNode = None
+        self.nextNode = None
 
         self.movingLeft = False
         self.movingRight = False
@@ -29,6 +30,9 @@ class Pacman(Sprite):
 
     def setCurrentNode(self, node):
         self.currentNode = node
+
+    def setNextNode(self, node):
+        self.nextNode = node
 
     def update(self):
         if self.movingLeft == True:

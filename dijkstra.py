@@ -94,7 +94,7 @@ def dijkstra(start, goal):
     predecessors = {}
     unseen_nodes = graph
 
-    print('total unseen_nodes: ' + str(len(unseen_nodes)))
+    # print('total unseen_nodes: ' + str(len(unseen_nodes)))
 
     infinity = 9999999
     path = []
@@ -128,8 +128,8 @@ def dijkstra(start, goal):
 
     path.insert(0, start)
     if shortest_distance[goal] != infinity:
-        print('\nShortest distance: ', shortest_distance[goal])
-        print('Shortest path is: ' + str(path))
+        # print('\nShortest distance: ', shortest_distance[goal])
+        # print('Shortest path is: ' + str(path))
         return path
 
 

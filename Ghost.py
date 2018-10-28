@@ -116,6 +116,9 @@ class Ghost(Sprite):
     def setDirection(self, nextNode):
         self.direction = self.graph[self.currentNode.key][nextNode]
 
+    def setDirection2(self, direct):
+        self.direction = direct
+
     def update(self):
         if self.direction == "right":
             self.centerx += self.pacSettings.ghostSpeed
