@@ -57,8 +57,7 @@ class Game():
                 eloop.pacmanPortalCollision(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.portals, self.portals2)
                 eloop.nextNodeDetection(self.pacman, self.mazeBound, self.nodes, self.nodeDetectors)
                 eloop.checkGhostNodeCollision(self.ghost, self.nodes, self.mazeBound)
-                # eloop.checkPacmanNodeCollision(self.pacman, self.ghost, self.nodes)
-                eloop.ghostRouting(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.ghost, self.nodes, self.mazeBound)
+                eloop.ghostRouting(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.ghost, self.nodes)
                 eloop.purgeDetectors(self.nodeDetectors)
                 self.updateScreen()
                 self.pacman.update()
@@ -97,7 +96,6 @@ class Game():
             nod.drawNode()
         self.pacman.drawPacman()
         self.ghost.blit()
-        # self.pacmanRight.drawRight()
         pygame.display.flip()
 
 pacSettings = Settings()

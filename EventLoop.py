@@ -61,19 +61,16 @@ def checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDo
     route = dijkstra(ghost.currentNode.key, pacman.currentNode.key)
     return route
 
-def ghostRouting(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes, mazeBound):
-    collisions = pygame.sprite.spritecollideany(ghost, mazeBound)
-    collisions2 = pygame.sprite.spritecollideany(ghost, nodes)
+def ghostRouting(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes):
+    collisions = pygame.sprite.spritecollideany(ghost, nodes)
     route = checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes)
-    last = route[len(route) - 1]
-    if collisions2:
+    if collisions:
         if len(route) >= 1 and ghost.currentNode.key == route[0]:
             route.pop(0)
             if len(route) > 0:
                 ghost.setDirection(route[0])
             else:
                 route2 = dijkstra(ghost.currentNode.key, pacman.nextNode.key)
-                last2 = route2[len(route2) - 1]
                 if len(route2) >= 1 and ghost.currentNode.key == route2[0]:
                     route2.pop(0)
                     if len(route2) > 0:
