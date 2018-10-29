@@ -33,10 +33,10 @@ def checkGhostNodeCollision(ghost, nodes, mazeBound):
         if ghost.rect.centery < collisions.rect.centery:
             ghost.centery += 1
         # print("Ghost" + ghost.currentNode.key)
-    if collisions2:
-        # print("I have collided with a wall")
-        print(ghost.direction)
-        print(ghost.currentNode.key)
+    # if collisions2:
+    #     print("I have collided with a wall")
+    #     print(ghost.direction)
+    #     print(ghost.currentNode.key)
 
 
 def checkPacmanNodeCollision(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, nodes):
