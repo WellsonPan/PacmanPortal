@@ -12,11 +12,12 @@ class Pacman(Sprite):
         self.color = (0, 255, 0)
         self.rect = pygame.Rect(0, 0, int(self.pacSettings.pacmanRad / 3), int(self.pacSettings.pacmanRad / 3))
         self.rect.center = self.screenRect.center
-        self.rect.centery += 205
+        self.rect.centery += 185
         self.rect.centerx += 15
 
         self.picListRight = ["images/PacmanClose.png", "images/PacmanHalf.png", "images/PacmanOpen.png", "images/PacmanHalf.png"]
         self.time = Timer(self.picListRight)
+        self.image = pygame.image.load("images/PacmanOpen.png")
         self.currentNode = None
         self.nextNode = None
 
@@ -50,11 +51,11 @@ class Pacman(Sprite):
 
     def drawPacman(self):
         # pygame.draw.circle(self.screen, self.color, self.rect.center, int(self.pacSettings.pacmanRad / 1.8))
-        self.image = pygame.image.load(self.time.imagerect())
-        self.image = pygame.transform.scale(self.image, (46, 46))
-        self.newRect = self.image.get_rect()
+        self.image2 = pygame.image.load(self.time.imagerect())
+        self.image2 = pygame.transform.scale(self.image2, (46, 46))
+        self.newRect = self.image2.get_rect()
         self.newRect.center = self.rect.center
-        self.screen.blit(self.image, self.newRect)
+        self.screen.blit(self.image2, self.newRect)
 
     def resetPos(self):
         self.centerx = self.screenRect.centerx

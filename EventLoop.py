@@ -81,12 +81,7 @@ def ghostRouting(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, ghost, n
             ghost.setDirection(route[0])
 
 def levelComplete(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, points, ghost):
-    collisions = pygame.sprite.collide_rect(pacman, ghost)
-    collisions1 = pygame.sprite.collide_rect(pacmanLeft, ghost)
-    collisions2 = pygame.sprite.collide_rect(pacmanRight, ghost)
-    collisions3 = pygame.sprite.collide_rect(pacmanUp, ghost)
-    collisions4 = pygame.sprite.collide_rect(pacmanDown, ghost)
-    if len(points) == 0 or collisions or collisions1 or collisions2 or collisions3 or collisions4:
+    if len(points) == 0:
         # ghost.resetPos()
         pacman.resetPos()
         pacmanLeft.resetPos()
@@ -96,7 +91,43 @@ def levelComplete(pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, p
         points.empty()
         maze.resetMaze(points)
 
-def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, detectionController):
+def pacHit(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, maze, points, ghost, scores):
+    collisions = pygame.sprite.collide_rect(pacman, ghost)
+    collisions1 = pygame.sprite.collide_rect(pacmanLeft, ghost)
+    collisions2 = pygame.sprite.collide_rect(pacmanRight, ghost)
+    collisions3 = pygame.sprite.collide_rect(pacmanUp, ghost)
+    collisions4 = pygame.sprite.collide_rect(pacmanDown, ghost)
+    if pacSettings.livesLeft > 0:
+        if collisions or collisions1 or collisions2 or collisions3 or collisions4:
+            pacSettings.livesLeft -= 1
+            scores.prep_ships()
+            # ghost.resetPos()
+            pacman.resetPos()
+            pacmanLeft.resetPos()
+            pacmanRight.resetPos()
+            pacmanUp.resetPos()
+            pacmanDown.resetPos()
+            points.empty()
+            maze.resetMaze(points)
+    else:
+        pacSettings.reset()
+        pacman.resetPos()
+        pacmanLeft.resetPos()
+        pacmanRight.resetPos()
+        pacmanUp.resetPos()
+        pacmanDown.resetPos()
+        points.empty()
+        maze.resetMaze(points)
+        scores.prep_ships()
+        file = open("files/highScores.txt", "r")
+        current = int(file.read())
+        file.close()
+        if pacSettings.high_score > current:
+            file = open("files/highScores.txt", "w")
+            file.write(str(pacSettings.high_score))
+            file.close()
+
+def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, detectionController, scores):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -107,6 +138,10 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, d
                 if buttonClicked and not pacSettings.gameActive:
                     pacSettings.highScores = False
                     pacSettings.gameActive = True
+                    scores.prep_ships()
+                    scores.prep_score()
+                    check_high_score(pacSettings, scores)
+                    scores.prep_high_score(readHighScore())
                 elif highClicked and not pacSettings.gameActive and not pacSettings.highScores:
                     pacSettings.highScores = True
                 elif highClicked and not pacSettings.gameActive and pacSettings.highScores:
@@ -205,8 +240,13 @@ def checkWallCollision(game, pacmanRight, pacmanLeft, pacmanUp, pacmanDown, maze
             game.pacmanUp.movingDown = False
             game.pacmanDown.movingDown = False
 
+def check_high_score(stats, sb):
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        sb.prep_high_score(readHighScore())
 
-def scoring(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, points):
+
+def scoring(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, points, scores):
         collisionPoint = pygame.sprite.spritecollide(pacman, points, True)
         collisionLeft = pygame.sprite.spritecollide(pacmanLeft, points, True)
         collisionRight = pygame.sprite.spritecollide(pacmanRight, points, True)
@@ -215,6 +255,9 @@ def scoring(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, 
 
         if collisionPoint or collisionLeft or collisionRight or collisionUp or collisionDown:
             pacSettings.score += pacSettings.pointVal
+            scores.prep_score()
+            check_high_score(pacSettings, scores)
+            scores.prep_high_score(readHighScore())
 
 
 def portalWallCollision(game, laser, laser2, portal, portal2, mazeBound):

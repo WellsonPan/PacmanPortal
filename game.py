@@ -13,6 +13,7 @@ from Ghost import Ghost
 from Button import Button, highScore
 from Start import Start
 from DetectionController import DetectionController
+from Scoreboard import Scoreboard
 
 class Game():
     def __init__(self, pacSettings):
@@ -24,6 +25,7 @@ class Game():
         self.playButton = Button(self.pacSettings, self.screen, "Play Game")
         self.highScoreButton = highScore(self.pacSettings, self.screen, "High Scores")
         self.startScreen = Start(self.pacSettings, self.screen)
+        self.scores = Scoreboard(self.pacSettings, self.screen)
 
         self.pacman = Pacman(self.pacSettings, self.screen)
         self.pacmanRight = PacmanRight(self.pacSettings, self.screen, self.pacman)
@@ -48,10 +50,10 @@ class Game():
     def play(self):
         self.detectionController = DetectionController(self)
         while True:
-            eloop.checkEvents(self, self.pacSettings, self.laser, self.laser2, self.playButton, self.highScoreButton, self.detectionController)
+            eloop.checkEvents(self, self.pacSettings, self.laser, self.laser2, self.playButton, self.highScoreButton, self.detectionController, self.scores)
             if self.pacSettings.gameActive and not self.pacSettings.highScores:
                 eloop.checkWallCollision(self, self.pacmanRight, self.pacmanLeft, self.pacmanUp, self.pacmanDown, self.mazeBound, self.barrierBound)
-                eloop.scoring(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.points)
+                eloop.scoring(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.points, self.scores)
                 eloop.levelComplete(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.maze, self.points, self.ghost)
                 eloop.portalWallCollision(self, self.laser, self.laser2, self.portals, self.portals2, self.mazeBound)
                 eloop.pacmanPortalCollision(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.portals, self.portals2)
@@ -59,6 +61,7 @@ class Game():
                 eloop.checkGhostNodeCollision(self.ghost, self.nodes, self.mazeBound)
                 eloop.ghostRouting(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.ghost, self.nodes)
                 eloop.purgeDetectors(self.nodeDetectors)
+                eloop.pacHit(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.maze, self.points, self.ghost, self.scores)
                 self.updateScreen()
                 self.pacman.update()
                 self.pacmanRight.update()
@@ -96,6 +99,7 @@ class Game():
             nod.drawNode()
         self.pacman.drawPacman()
         self.ghost.blit()
+        self.scores.show_score()
         pygame.display.flip()
 
 pacSettings = Settings()

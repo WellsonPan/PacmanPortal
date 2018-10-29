@@ -1,7 +1,7 @@
 class Settings():
     def __init__(self):
         self.screenWidth = 738
-        self.screenHeight = 818
+        self.screenHeight = 868
         self.backgroundColor = (0, 0, 0)
         self.gameActive = False
         self.highScores = False
@@ -14,6 +14,8 @@ class Settings():
         # points
         self.pointVal = 10
         self.score = 0
+        self.high_score = 0
+        self.livesLeft = 3
 
         # Ghosts
         self.blinkyColor = (255, 0, 0)
@@ -29,3 +31,4 @@ class Settings():
     def reset(self):
         self.score = 0
         self.gameActive = False
+        self.livesLeft = 3

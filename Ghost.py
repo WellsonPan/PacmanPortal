@@ -16,7 +16,7 @@ class Ghost(Sprite):
         self.currentNode = None
 
         self.rect.centerx = self.screenRect.centerx
-        self.rect.centery = self.screenRect.centery - 20
+        self.rect.centery = self.screenRect.centery - 40
 
         self.direction = None
 
