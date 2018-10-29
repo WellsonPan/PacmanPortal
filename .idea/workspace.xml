@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b9b9fce-ec0e-466e-99bd-74b88173c289" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Scoreboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EventLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/EventLoop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ghost.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ghost.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pacman.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pacman.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/highScores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/highScores.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/PacmanHalf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/PacmanOpen.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,13 +20,13 @@
     <session id="-767438936">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,14 +45,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="31185" />
+          <entry key="py" value="32111" />
           <entry key="txt" value="660" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="660" />
-          <entry key="Python" value="31185" />
+          <entry key="Python" value="32111" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -63,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
+            <state relative-caret-position="986">
+              <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1540841238673" expanded="true" signature="492:497" ph="..." />
@@ -76,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scoreboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+            <state relative-caret-position="629">
+              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1540840923221" expanded="true" signature="1723:1732" ph="..." />
@@ -95,7 +95,6 @@
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1540840599197" expanded="true" signature="90:95" ph="..." />
                 <marker date="1540840599197" expanded="true" signature="5511:5549" ph="..." />
-                <marker date="1540840599197" expanded="true" signature="6477:6592" ph="..." />
               </folding>
             </state>
           </provider>
@@ -105,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/Maze.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1540794879501" expanded="true" signature="3516:3521" ph="..." />
@@ -114,19 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventLoop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2206">
-              <caret line="139" column="49" lean-forward="true" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
-              <folding>
-                <marker date="1540841715401" expanded="true" signature="119:678" ph="..." />
-                <marker date="1540841715401" expanded="true" signature="207:308" ph="..." />
-                <marker date="1540841715401" expanded="true" signature="731:1466" ph="..." />
-                <marker date="1540841715401" expanded="true" signature="2507:3243" ph="..." />
-                <marker date="1540841715401" expanded="true" signature="3337:5004" ph="..." />
-                <marker date="1540841715401" expanded="true" signature="3698:3703" ph="..." />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -135,7 +126,7 @@
         <entry file="file://$PROJECT_DIR$/files/highScores.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
+              <caret column="4" selection-start-column="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -144,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/Portal.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="65" lean-forward="true" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+              <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1540794879562" expanded="true" signature="75:1315" ph="..." />
@@ -158,7 +149,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/images/pacmanportalmaze_dijkstra_nodes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
+            <state relative-caret-position="646">
               <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
             </state>
           </provider>
@@ -167,26 +158,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="425">
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding>
-                <marker date="1540841273103" expanded="true" signature="17:22" ph="..." />
+                <marker date="1540847494093" expanded="true" signature="17:22" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Pacman.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+            <state relative-caret-position="306">
+              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1540840624163" expanded="true" signature="93:98" ph="..." />
-                <marker date="1540840624163" expanded="true" signature="1224:1259" ph="..." />
-                <marker date="1540840624163" expanded="true" signature="1276:1743" ph="..." />
-                <marker date="1540840624163" expanded="true" signature="1764:1769" ph="..." />
+                <marker date="1540852483128" expanded="true" signature="93:98" ph="..." />
+                <marker date="1540852483128" expanded="true" signature="1826:1861" ph="..." />
               </folding>
             </state>
           </provider>
@@ -237,16 +226,17 @@
         <option value="$PROJECT_DIR$/Portal.py" />
         <option value="$PROJECT_DIR$/Maze.py" />
         <option value="$PROJECT_DIR$/Ghost.py" />
-        <option value="$PROJECT_DIR$/Pacman.py" />
         <option value="$PROJECT_DIR$/Scoreboard.py" />
         <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/Settings.py" />
         <option value="$PROJECT_DIR$/EventLoop.py" />
+        <option value="$PROJECT_DIR$/Pacman.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="820" />
+    <option name="y" value="-11" />
     <option name="width" value="974" />
     <option name="height" value="1057" />
   </component>
@@ -281,8 +271,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Space Invader Clone" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -474,9 +464,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/pacmanportalmazejd.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/images/pacmanportalmazejd.txt" />
     <entry file="file://$PROJECT_DIR$/Node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -498,13 +486,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dijkstra (1).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="135" column="2" selection-start-line="135" selection-start-column="2" selection-end-line="135" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dijkstra (1).py" />
     <entry file="file://$PROJECT_DIR$/timer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -544,33 +526,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Portal.py">
+    <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="65" lean-forward="true" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+        <state relative-caret-position="986">
+          <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1540794879562" expanded="true" signature="75:1315" ph="..." />
-            <marker date="1540794879562" expanded="true" signature="3034:4714" ph="..." />
-            <marker date="1540794879562" expanded="true" signature="4736:4741" ph="..." />
+            <marker date="1540841238673" expanded="true" signature="492:497" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/pacmanportalmaze_dijkstra_nodes.txt">
+    <entry file="file://$PROJECT_DIR$/Scoreboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Maze.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="629">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1540794879501" expanded="true" signature="3516:3521" ph="..." />
+            <marker date="1540840923221" expanded="true" signature="1723:1732" ph="..." />
           </folding>
         </state>
       </provider>
@@ -583,75 +556,73 @@
             <element signature="e#0#13#0" expanded="true" />
             <marker date="1540840599197" expanded="true" signature="90:95" ph="..." />
             <marker date="1540840599197" expanded="true" signature="5511:5549" ph="..." />
-            <marker date="1540840599197" expanded="true" signature="6477:6592" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pacman.py">
+    <entry file="file://$PROJECT_DIR$/Maze.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+        <state relative-caret-position="136">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1540840624163" expanded="true" signature="93:98" ph="..." />
-            <marker date="1540840624163" expanded="true" signature="1224:1259" ph="..." />
-            <marker date="1540840624163" expanded="true" signature="1276:1743" ph="..." />
-            <marker date="1540840624163" expanded="true" signature="1764:1769" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scoreboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1540840923221" expanded="true" signature="1723:1732" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1540841238673" expanded="true" signature="492:497" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/highScores.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding>
-            <marker date="1540841273103" expanded="true" signature="17:22" ph="..." />
+            <marker date="1540794879501" expanded="true" signature="3516:3521" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EventLoop.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2206">
-          <caret line="139" column="49" lean-forward="true" selection-start-line="139" selection-start-column="49" selection-end-line="139" selection-end-column="49" />
+        <state relative-caret-position="408">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/highScores.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Portal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
           <folding>
-            <marker date="1540841715401" expanded="true" signature="119:678" ph="..." />
-            <marker date="1540841715401" expanded="true" signature="207:308" ph="..." />
-            <marker date="1540841715401" expanded="true" signature="731:1466" ph="..." />
-            <marker date="1540841715401" expanded="true" signature="2507:3243" ph="..." />
-            <marker date="1540841715401" expanded="true" signature="3337:5004" ph="..." />
-            <marker date="1540841715401" expanded="true" signature="3698:3703" ph="..." />
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1540794879562" expanded="true" signature="75:1315" ph="..." />
+            <marker date="1540794879562" expanded="true" signature="3034:4714" ph="..." />
+            <marker date="1540794879562" expanded="true" signature="4736:4741" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/pacmanportalmaze_dijkstra_nodes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding>
+            <marker date="1540847494093" expanded="true" signature="17:22" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pacman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1540852483128" expanded="true" signature="93:98" ph="..." />
+            <marker date="1540852483128" expanded="true" signature="1826:1861" ph="..." />
           </folding>
         </state>
       </provider>

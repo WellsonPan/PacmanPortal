@@ -25,13 +25,13 @@ def checkGhostNodeCollision(ghost, nodes, mazeBound):
     if collisions:
         ghost.setCurrentNode(collisions)
         if ghost.rect.centerx < collisions.rect.centerx:
-            ghost.centerx += 1
+            ghost.centerx += .75
         if ghost.rect.centerx > collisions.rect.centerx:
-            ghost.centerx -= 1
+            ghost.centerx -= .75
         if ghost.rect.centery > collisions.rect.centery:
-            ghost.centery -= 1
+            ghost.centery -= .75
         if ghost.rect.centery < collisions.rect.centery:
-            ghost.centery += 1
+            ghost.centery += .75
         # print("Ghost" + ghost.currentNode.key)
     # if collisions2:
     #     print("I have collided with a wall")

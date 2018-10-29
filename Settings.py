@@ -9,7 +9,7 @@ class Settings():
         # Pacman
         self.pacmanColor = (255, 255, 0)
         self.pacmanRad = 36
-        self.pacmanSpeed = 1.5
+        self.pacmanSpeed = 2
 
         # points
         self.pointVal = 10
@@ -23,7 +23,7 @@ class Settings():
         self.inkyColor = (137, 207, 240)
         self.clydeColor = (255, 165, 0)
         self.ghostSize = 34
-        self.ghostSpeed = 1.5
+        self.ghostSpeed = 2
 
         # Portal
         self.portalSpeed = 10
