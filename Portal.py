@@ -8,7 +8,7 @@ class nodeDetector(Sprite):
         self.screen = screen
         self.pacman = pacman
 
-        self.image = pygame.image.load("images/hPortal.png")
+        self.image = pygame.image.load("images/Node.png")
         self.image = pygame.transform.scale(self.image, (16, 16))
         self.rect = self.image.get_rect()
         self.screenRect = self.screen.get_rect()

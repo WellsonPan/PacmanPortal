@@ -9,13 +9,14 @@ class Ghost(Sprite):
         self.screen = screen
         self.screenRect = screen.get_rect()
         self.image = pygame.image.load("images/blinkyBody.png")
-        self.image = pygame.transform.scale(self.image, (36, 36))
+        self.image = pygame.transform.scale(self.image, (24, 24))
         self.rect = self.image.get_rect()
+        self.image = pygame.transform.scale(self.image, (36, 36))
 
         self.currentNode = None
 
-        self.rect.center = self.screenRect.center
-        self.rect.centery -= 20
+        self.rect.centerx = self.screenRect.centerx
+        self.rect.centery = self.screenRect.centery - 20
 
         self.direction = None
 
@@ -44,7 +45,7 @@ class Ghost(Sprite):
                  'cE': {'cD': "left", 'dE': "down"},
                  'cG': {'cH': "right", 'dG': "down"},
                  'cH': {'cG': "left", 'bH': "up"},
-                 'cI': {'bH': "left", 'cK': "right", 'fI': "down"},
+                 'cI': {'bH': "up", 'cK': "right", 'fI': "down"},
                  'cK': {'cI': "left", 'bK': "up"},
 
                  'dD': {'dE': "right", 'fD': "down"},
@@ -93,7 +94,7 @@ class Ghost(Sprite):
                  'jJ': {'jK': "right", 'kJ': "down"},
                  'jK': {'jJ': "left", 'iK': "up"},
 
-                 'kA': {'kB': "right", 'iA': "left"},
+                 'kA': {'kB': "right", 'iA': "up"},
                  'kB': {'kA': "left", 'jB': "up", 'kC': "right"},
                  'kC': {'kB': "left", 'jC': "up"},
                  'kD': {'jD': "up", 'kE': "right"},
@@ -135,6 +136,21 @@ class Ghost(Sprite):
         self.rect.centerx = self.centerx
         self.rect.centery = self.centery
 
+    def reverse(self, direct):
+        if direct == "right":
+            self.direction = "left"
+        if direct == "left":
+            self.direction = "right"
+        if direct == "up":
+            self.direction = "down"
+        if direct == "down":
+            self.direction = "up"
+
+    def resetPos(self):
+        self.currentNode = None
+        self.direction = None
+        self.rect.centerx = self.screenRect.centerx
+        self.rect.centery = self.screenRect.centery - 20
 
     def blit(self):
         self.screen.blit(self.image, self.rect)

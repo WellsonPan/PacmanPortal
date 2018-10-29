@@ -8,7 +8,7 @@ class Maze():
     BRICK_SIZE = 16
     POINT_SIZE = 9
     PILL_SIZE = 12
-    NODE_SIZE = 12
+    NODE_SIZE = 20
 
     graph = {'aA': {'aC': 8, 'bA': 6},
              'aC': {'aA': 8, 'aE': 10, 'bC': 6},
