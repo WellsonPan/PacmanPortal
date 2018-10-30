@@ -46,12 +46,16 @@ class Game():
         self.ghost = Ghost(self.pacSettings, self.screen)
 
         self.maze = Maze(self.pacSettings, self.screen, "images/pacmanportalmaze.txt", "Block", "hPortal", "shield", "Point", "Node", self.mazeBound, self.barrierBound, self.points, self.nodes)
+        pygame.mixer.init()
+        self.begin = pygame.mixer.Sound("files/pacman_beginning.wav")
+        self.begin.set_volume(.05)
 
     def play(self):
         self.detectionController = DetectionController(self)
         while True:
             eloop.checkEvents(self, self.pacSettings, self.laser, self.laser2, self.playButton, self.highScoreButton, self.detectionController, self.scores)
             if self.pacSettings.gameActive and not self.pacSettings.highScores:
+                self.begin.stop()
                 eloop.checkWallCollision(self, self.pacmanRight, self.pacmanLeft, self.pacmanUp, self.pacmanDown, self.mazeBound, self.barrierBound)
                 eloop.scoring(self.pacSettings, self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.points, self.scores)
                 eloop.levelComplete(self.pacman, self.pacmanLeft, self.pacmanRight, self.pacmanUp, self.pacmanDown, self.maze, self.points, self.ghost)
@@ -74,6 +78,7 @@ class Game():
                 self.nodeDetectors.update()
                 self.detectionController.update(self.nodeDetectors)
             elif not self.pacSettings.highScores and not self.pacSettings.gameActive:
+                self.begin.play()
                 self.screen.fill((0, 0, 0))
                 self.startScreen.printStart()
                 self.playButton.draw_button()

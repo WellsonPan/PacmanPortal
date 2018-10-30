@@ -6,7 +6,7 @@ from DetectionController import DetectionController
 
 def purgeDetectors(nodeDetectors):
     now = pygame.time.get_ticks()
-    if int((now / 1000) % 5) == 1:
+    if (int(now / 1000) % 3) == 1:
         nodeDetectors.empty()
 
 def nextNodeDetection(pacman, mazeBound, nodes, nodeDetectors):
@@ -128,6 +128,9 @@ def pacHit(pacSettings, pacman, pacmanLeft, pacmanRight, pacmanUp, pacmanDown, m
             file.close()
 
 def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, detectionController, scores):
+        pygame.mixer.init()
+        waka = pygame.mixer.Sound("files/pacman_chomp.wav")
+        waka.set_volume(.05)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -154,6 +157,7 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, d
                     game.pacmanUp.movingRight = True
                     game.pacmanDown.movingRight = True
                     detectionController.detect = True
+                    waka.play()
                 if event.key == pygame.K_LEFT:
                     game.pacman.movingLeft = True
                     game.pacmanRight.movingLeft = True
@@ -161,6 +165,7 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, d
                     game.pacmanUp.movingLeft = True
                     game.pacmanDown.movingLeft = True
                     detectionController.detect = True
+                    waka.play()
                 if event.key == pygame.K_DOWN:
                     game.pacman.movingDown = True
                     game.pacmanRight.movingDown = True
@@ -168,6 +173,7 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, d
                     game.pacmanUp.movingDown = True
                     game.pacmanDown.movingDown = True
                     detectionController.detect = True
+                    waka.play()
                 if event.key == pygame.K_UP:
                     game.pacman.movingUp = True
                     game.pacmanRight.movingUp = True
@@ -175,6 +181,7 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, d
                     game.pacmanUp.movingUp = True
                     game.pacmanDown.movingUp = True
                     detectionController.detect = True
+                    waka.play()
                 if event.key == pygame.K_q:
                     lase = Laser(game.pacSettings, game.screen, game.pacman)
                     laser.add(lase)
@@ -188,24 +195,28 @@ def checkEvents(game, pacSettings, laser, laser2, playButton, highScoreButton, d
                     game.pacmanLeft.movingRight = False
                     game.pacmanUp.movingRight = False
                     game.pacmanDown.movingRight = False
+                    waka.stop()
                 if event.key == pygame.K_LEFT:
                     game.pacman.movingLeft = False
                     game.pacmanRight.movingLeft = False
                     game.pacmanLeft.movingLeft = False
                     game.pacmanUp.movingLeft = False
                     game.pacmanDown.movingLeft = False
+                    waka.stop()
                 if event.key == pygame.K_DOWN:
                     game.pacman.movingDown = False
                     game.pacmanRight.movingDown = False
                     game.pacmanLeft.movingDown = False
                     game.pacmanUp.movingDown = False
                     game.pacmanDown.movingDown = False
+                    waka.stop()
                 if event.key == pygame.K_UP:
                     game.pacman.movingUp = False
                     game.pacmanRight.movingUp = False
                     game.pacmanLeft.movingUp = False
                     game.pacmanUp.movingUp = False
                     game.pacmanDown.movingUp = False
+                    waka.stop()
 
 
 def checkWallCollision(game, pacmanRight, pacmanLeft, pacmanUp, pacmanDown, mazeBound, barrierBound):

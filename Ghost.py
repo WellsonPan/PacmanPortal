@@ -11,7 +11,7 @@ class Ghost(Sprite):
         self.image = pygame.image.load("images/blinkyBody.png")
         self.image = pygame.transform.scale(self.image, (24, 24))
         self.rect = self.image.get_rect()
-        self.image = pygame.transform.scale(self.image, (36, 36))
+        self.image = pygame.transform.scale(self.image, (34, 30))
 
         self.currentNode = None
 

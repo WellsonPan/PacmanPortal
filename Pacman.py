@@ -75,6 +75,7 @@ class Pacman(Sprite):
             self.image2 = pygame.image.load(self.time4.imagerect())
         else:
             self.image2 = pygame.image.load(self.time5.imagerect())
+
         self.image2 = pygame.transform.scale(self.image2, (46, 46))
         self.newRect = self.image2.get_rect()
         self.newRect.center = self.rect.center

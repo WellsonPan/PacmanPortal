@@ -9,7 +9,7 @@ class Settings():
         # Pacman
         self.pacmanColor = (255, 255, 0)
         self.pacmanRad = 36
-        self.pacmanSpeed = 2
+        self.pacmanSpeed = 2.1
 
         # points
         self.pointVal = 10
